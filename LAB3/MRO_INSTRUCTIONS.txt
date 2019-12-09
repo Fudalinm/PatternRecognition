@@ -1,0 +1,19 @@
+(w przypadku wątpliwości dotyczących implementacji polecam pierwszy z linków w materiałach).
+
+> Wybierzmy sobie 3 zdjęcia. Najlepiej, by miały różną naturę (np. krajobraz, twarz, obiekt o wielu szczegółach). Dla uproszczenia pozostałych kroków przekonwertujmy je do skali szarości.
+> Wyliczmy dla nich transformację DCT (np. typu II, ale może być też dowolny inny)
+> W domenie częstotliwościowej usuńmy część współczynników na kilka sposobów.
+>> Zostawmy tylko te w pobliżu lewego górnego rogu (najniższe częstotliwości).
+>> Zostawmy tylko wszystkie pozostałe
+>> Każdy współczynnik zmniejszamy w stopniu proporcjonalnym do jego odległości od lewego górnego rogu (podobnie jak pierwszy wariant, ale stopniowy zanik zamiast ostrej granicy).
+>> Usunięty arbitralny kształt, np. trójkąt na środku.
+>> Część współczynników zamieniona na współczynniki policzone dla innego ze zdjęć.
+> Wykonajmy odwrotną DCT konwertując z domeny częstotliwości z powrotem do samych fotografii. Co uzyskaliśmy?
+
+> Następnie wykonajmy na tych samych fotografiach kilka eksperymentów z Compressive Sensing (opartym o DCT).
+> Wybierzmy losowo k% pikseli z oryginalnej fotografii. Odtwórzmy całą fotografię z użyciem CS. Obliczmy różnicę między pierwotnym obrazem, a tym uzyskanym po rekonstrukcji. Przygotujmy wykres tej różnicy w zależności od k (czyli % dostępnych na starcie pikseli).
+> Dla wartości k, gdzie błąd jest jeszcze tolerowalnie niewielki powtórz eksperyment wielokrotnie. Dla każdego piksela pokaż jaki był średni błąd jego rekonstrukcji (inaczej mówiąc - narysuj heatmapę pokazującą średni błąd w tym miejscu obrazu). Z rekonstrukcją których pikseli jest zwykle największy problem?
+> Zmniejsz startową rozdzielczość fotografii, wykonaj taki sam wykres zależności błędu od k jak dwa punkty wcześniej. Czy coś się zmieniło?
+> Zmień sposób próbkowania z jednolitego na całej powierzchni na taki, który bardziej koncentruje się na środku (np. w oparciu o rozkład normalny). Jak to wpływa na uzyskiwane rekonstrukcje?
+> Usuń niezbyt duży prostokąt z centrum zdjęcia, użyj wszystkich pozostałych pikseli jako próbek do procedury CS. Jak został zrekonstruowany ten usunięty obszar?
+> Spróbuj użyć CS do sztucznego zwiększenia rozdzielczości zdjęcia. W tym celu użyj jako próbek WSZYSTKICH pierwotnych pikseli, ale otocz je "wirtualnymi" pominiętymi pikselami. Metoda CS powinna pozwolić na znalezienie wartości tych nowych, dodatkowych pikseli. Jaka jest jakość takiego opartego o rekonstrukcję upscalingu?

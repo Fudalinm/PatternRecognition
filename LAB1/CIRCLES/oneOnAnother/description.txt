@@ -1,0 +1,3 @@
+20 okregow
+promien 50
+szukane 48-52

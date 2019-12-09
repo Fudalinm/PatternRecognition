@@ -1,0 +1,52 @@
+CS - compresive sensing
+
+Norma sluzy do  opisania dlugosci wektora na rozne sposoby.
+The L1 norm that is calculated as the sum of the absolute values of the vector.
+The L1 norm is often used when fitting machine learning algorithms as a regularization method, e.g. a method to keep the coefficients of the model small, and in turn, the model less complex.
+The L2 norm that is calculated as the square root of the sum of the squared vector values.
+
+- norma L1 a L2 - czym się różnią, główne cechy, jakie wektory uznają za krótsze, 
+    jak zadziała używająca ich regresja liniowa, etc.
+    
+    l1 traktuje kazda skladowa rowno
+    w l2 male wartosci traca na znaczeniu
+    
+    l2 stabilniejsza
+    
+    l1 ma kilka rozwiazan jak isc z punktu a do best
+    l2 ma tylko jedna poprawna
+    
+    l1 bardziej zlozone obliczeniowo
+    
+
+     
+    http://www.chioka.in/differences-between-the-l1-norm-and-the-l2-norm-least-absolute-deviations-and-least-squares/
+    L1 - least absolute regression
+        zdecydowana(?)
+        niestabilna
+        kilka mozliwych rozwiazan
+        built-in feature selection
+        gorsza obliczeniowo dla CPU
+    
+    L2 - least square regression
+        niedecydowana (?)
+        stabilna
+        jedno mozliwe rozewiazanie
+        no-feature selection
+        lepsza do obliczen dla CPU
+        
+        
+    
+    
+- Dyskretna Transformata Kosinusowa (i odwrotna do niej), co to, po co to, 
+    dlaczego ma kilka typów
+    
+    
+    
+    
+- jak zastosować DTC w 2D (i 3D)
+- twierdzenie o próbkowaniu Nyquista-Shannona, co z niego wynika
+- jak CS rekonstruuje pełen sygnał z jego sampli, jak korzysta w tym celu 
+    z dodatkowego założenia o rzadkiej reprezentacji w domenie częstotliwości
+- jakie problemy wydajnościowe pojawiają się przy użyciu CS dla większych danych, 
+    jak z nimi zawalczyć

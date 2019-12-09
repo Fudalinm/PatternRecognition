@@ -1,0 +1,2 @@
+promien 54
+szukany 48 52

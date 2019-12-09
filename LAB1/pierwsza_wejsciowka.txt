@@ -1,0 +1,87 @@
+
+
+jak działa rozmycie obrazu, w szczególności rozmycie gaussowskie
+    konwolucja to przeksztalcenie obrazu przy pomocy kernela => rozne liczby w kernelu
+    pozwalaja na osiagniecie roznych efektow (rozmycie wyostrzenie gradient)
+
+    jest to proces konwolucji z zadanym kernelem
+        dla mean blurra kernel to
+        dla gausa kernel jest zgodny z rozkladem noramlnym
+co to kernel i konwolucja
+    jak wyzej
+co to operator Sobela i po co nam on
+    operator sobela pozwala na otrzymanie macierzy gradientu dla danego obrazu
+    aby to wykonac uzywamy kernelax i kernelay
+     1  2  1   -1 0 1
+     0  0  0   -2 0 2
+    -1 -2 -1   -1 0 1
+
+    otrzymane wartosci skladamy do pojedynczej macierzy w sposob G = ( GX^2 + GY^2 )^1/2
+
+
+
+na czym polega technika non-maximum suppression
+    jej celem jest 'wyciecie' nieistotnych pixeli. Pixel jest wycinany wtedy gdy
+    jeden z sasiadujacych z nim pixeli (w kierunku gradientu) ma wieksza wartosc.
+
+
+
+na czym polega technika podwójnego progu z histerezą
+    ustalamy sobie granice high i low. wartosci gradientu powyzej high uznajemy za
+    istotne dla danej krawedzi i je zatrzymujemy, ponizej danej wartosci sa usuwane.
+    wartosci z pomiedzy tych 2 granic mozna albo zatrzymac albo usunac w zaleznosci
+    od ich dalszej identyfikacji
+
+    dalsza identyfikacja to edge-tracing wzmaciamy tylko te pixele ktore posiadaja mocnych
+    sasiadow. pozsotale sa zerowane.
+
+
+
+i jak wszystkie powyższe spiąć w mechanizm wykrywania krawędzi Canny'ego
+    rozmycie
+    sobela (gradient)
+    non maximum supression
+    double treshold + edge tracking
+
+
+na czym polega transformata Hougha
+    transformacja hough polega na wykryciu krawedzi (jak w cannym) a nastepnie
+        mapowaniu kazdego punktu na wszystkie linie przez niego przechodzace przy pomocy katu
+        i oddalenia od srodka ukladu wspolrzednych
+        natomiast proste sa mapowane wlasnie na punkty (teta + oddalenie od srodka ukladu  wspolrzednych)
+        punkt jest mapowany na prosta
+
+        w nowej przestrzeni punkty przez ktory przechodzi wiele prostych opisuja nasza krawedz
+
+
+co to jest przestrzeń Hougha
+
+    no jak wyzej
+    z ta roznica ze w aparacie matematyccznym mozemy sobie wyznaczyc po prostu sinusoide zamiast tablicy
+
+dlaczego warto użyć polarnej reprezentacji parametrów
+    dokladnosc
+
+jak uogólnić TH dla dowolnego kształtu parametrycznego
+    oblicz srodek ciezkosci
+    oblicz dla kazdej krawedzi odleglosc od srodka ciezkosi i wyznacz wektor do jego srodka
+    tworzymy tabele jedna kolumna to kat gradientu a druga to wektor z danego punktu
+
+
+
+jak skorzystać z wyznaczonego na bazie gradientów kierunku krawędzi, by uprościć TH
+
+plusy i minusy TH
+    +:
+    przetwarzane niezaleznie
+    odpornosc na szum
+    w jednhym przejsciu wiele ksztaltow
+    -:
+    zlozonosc rosnie wykladniczo z liczba parametrow
+    falszywe wykrycie ksztaltow
+    problem z wyborem wielkosci sitaki
+
+jak z TH zrobić uogólnioną TH (i po co)
+    aby wykrywac wiele ksztaltow (nieparametrycznych)
+    trzeba wyznaczyc srodek ciezkosci, nastepnie policzyc wektor z danej krawedzi do srodka ciezkosci
+    stworzyc tabele teta(gradientu) -> wektory
